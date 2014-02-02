@@ -1,0 +1,12 @@
+---
+- name: Install a url to a file.
+  get_url: url='{{ url }}' dest='{{ dest }}' force='{{ should_i_force }}'
+  when: url is defined
+
+- name: Install template to a file.
+  action: template src='{{ file }}' dest='{{ dest }}'
+  when: file is defined
+
+- name: Set permissions on file.
+  file: path='{{ dest }}' owner='{{ owner }}' group='{{ group }}' mode='{{ perms }}'
+  when: file is defined or url is defined

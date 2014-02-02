@@ -1,0 +1,16 @@
+- hosts: nonfiction
+  user: darron
+  sudo: True
+  gather_facts: False
+  vars:
+    # Pick url or file - don't use both at the same time.
+    # url: https://gist.github.com/darron/d39e027cc651e4b94c72/raw/e4c2826b107197d0bcdd0d6067e3461a0d43e521/gistfile1.txt
+    file: ../files/local-file
+    dest: /home/darron/.ssh/please_rename_me_authorized_keys
+    should_i_force: 'yes'
+    owner: darron
+    group: darron
+    perms: '0600'
+
+  roles:
+    - key-blast
